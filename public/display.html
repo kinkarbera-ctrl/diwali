@@ -1,0 +1,1762 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Diwali Prize Display</title>
+
+<style>
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+
+body{
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #8c0000,
+            #3b0000 65%,
+            #170000
+        );
+
+    color:white;
+
+    display:flex;
+    flex-direction:column;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.header{
+
+    height:82px;
+    flex:none;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        180px
+        1fr;
+
+    align-items:center;
+
+    padding:6px 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #620000,
+            #a80000,
+            #620000
+        );
+
+    border-bottom:3px solid #efbf42;
+
+}
+
+
+.brand{
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.diya{
+
+    font-size:34px;
+
+}
+
+
+.title{
+
+    font-size:24px;
+    font-weight:900;
+
+    color:#ffe49a;
+
+}
+
+
+.company{
+
+    margin-top:2px;
+
+    font-size:11px;
+    font-weight:900;
+
+    letter-spacing:2px;
+
+}
+
+
+.current{
+
+    text-align:center;
+
+}
+
+
+.current-label{
+
+    font-size:10px;
+    font-weight:900;
+
+    color:#ffd76a;
+
+}
+
+
+.current-no{
+
+    margin-top:2px;
+
+    font-size:30px;
+    line-height:1;
+
+    font-weight:900;
+
+    color:white;
+
+}
+
+
+.header-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+}
+
+
+.header-btn{
+
+    height:38px;
+
+    padding:0 15px;
+
+    border:0;
+
+    border-radius:8px;
+
+    color:white;
+
+    font-size:13px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 3px 8px #0006;
+
+}
+
+
+.header-btn:hover{
+
+    filter:brightness(1.12);
+
+}
+
+
+.back-btn{
+
+    background:
+        linear-gradient(
+            135deg,
+            #087d49,
+            #04572f
+        );
+
+}
+
+
+.clear-btn{
+
+    background:
+        linear-gradient(
+            135deg,
+            #e08c19,
+            #b65a00
+        );
+
+}
+
+
+/* =====================================================
+   PRIZE GRID
+   ===================================================== */
+
+.grid{
+
+    flex:1;
+
+    min-height:0;
+
+    padding:8px 10px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(10, minmax(0,1fr));
+
+    grid-template-rows:
+        repeat(6, minmax(0,1fr));
+
+    gap:6px;
+
+}
+
+
+/* =====================================================
+   PRIZE BOX
+   ===================================================== */
+
+.box{
+
+    min-width:0;
+    min-height:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:2px solid #d8a632;
+
+    border-radius:8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff0a8,
+            #e3a52e
+        );
+
+    color:#650000;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 2px 6px #0006;
+
+    transition:
+        transform .1s,
+        filter .1s;
+
+}
+
+
+.box:hover{
+
+    transform:scale(1.03);
+
+    filter:brightness(1.08);
+
+}
+
+
+.box.selected{
+
+    border:3px solid white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff36a,
+            #ff9700
+        );
+
+    box-shadow:
+        0 0 18px #ffd42e;
+
+}
+
+
+.box.winner{
+
+    background:
+        linear-gradient(
+            145deg,
+            #36bd70,
+            #08753a
+        );
+
+    color:white;
+
+    border-color:#c8ffdc;
+
+}
+
+
+/* =====================================================
+   PRIZE NUMBER
+   ===================================================== */
+
+.number{
+
+    font-size:14px;
+
+    font-weight:900;
+
+    line-height:1;
+
+}
+
+
+/* =====================================================
+   WINNER PHOTO - SLIGHTLY BIGGER
+   ===================================================== */
+
+.winner-photo-box{
+
+    width:72px;
+    height:72px;
+
+    margin-top:5px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:2px solid white;
+
+    background:white;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+}
+
+
+.winner-photo-box img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+/* =====================================================
+   SAP CODE + COUPON NO.
+   ALWAYS VISIBLE
+   ===================================================== */
+
+.winner-mini-info{
+
+    width:100%;
+
+    margin-top:5px;
+
+    text-align:center;
+
+    font-size:
+        clamp(7px, .65vw, 10px);
+
+    line-height:1.35;
+
+    font-weight:900;
+
+    color:white;
+
+    white-space:normal;
+
+    overflow:hidden;
+
+}
+
+
+.winner-mini-info div{
+
+    margin:1px 0;
+
+}
+
+
+/* =====================================================
+   STATUS
+   ===================================================== */
+
+.status{
+
+    margin-top:3px;
+
+    font-size:
+        clamp(7px, .65vw, 11px);
+
+    font-weight:900;
+
+}
+
+
+/* =====================================================
+   WINNER POPUP
+   ===================================================== */
+
+.winner-area{
+
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:min(700px, 90vw);
+
+    display:none;
+
+    z-index:500;
+
+}
+
+
+.winner-card{
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff7cf,
+            #ffffff
+        );
+
+    color:#650000;
+
+    border:4px solid #e4b52f;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+        0 15px 50px #0009;
+
+    display:grid;
+
+    grid-template-columns:
+        210px 1fr;
+
+    gap:22px;
+
+    align-items:center;
+
+}
+
+
+.winner-photo{
+
+    width:210px;
+    height:240px;
+
+    object-fit:cover;
+
+    border-radius:14px;
+
+    border:4px solid #d5a52e;
+
+    background:#eee;
+
+    display:none;
+
+}
+
+
+.winner-placeholder{
+
+    width:210px;
+    height:240px;
+
+    border-radius:14px;
+
+    border:4px solid #d5a52e;
+
+    background:#fff2c8;
+
+    color:#b49a64;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:70px;
+
+}
+
+
+.winner-info{
+
+    min-width:0;
+
+}
+
+
+.winner-title{
+
+    font-size:20px;
+
+    font-weight:900;
+
+    color:#9a0000;
+
+    margin-bottom:8px;
+
+}
+
+
+.winner-prize{
+
+    margin-top:8px;
+
+    font-size:34px;
+
+    font-weight:900;
+
+    color:#b47400;
+
+}
+
+
+.winner-sap{
+
+    margin-top:12px;
+
+    font-size:24px;
+
+    font-weight:900;
+
+    color:#075b91;
+
+}
+
+
+.winner-coupon{
+
+    margin-top:12px;
+
+    font-size:27px;
+
+    font-weight:900;
+
+    color:#08753a;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:900px){
+
+    .header{
+
+        grid-template-columns:
+            1fr
+            130px
+            1fr;
+
+        padding:5px 10px;
+
+    }
+
+
+    .title{
+
+        font-size:18px;
+
+    }
+
+
+    .company{
+
+        font-size:9px;
+
+    }
+
+
+    .current-no{
+
+        font-size:25px;
+
+    }
+
+
+    .header-btn{
+
+        padding:0 10px;
+
+        font-size:11px;
+
+    }
+
+
+    .winner-card{
+
+        grid-template-columns:
+            150px 1fr;
+
+        gap:14px;
+
+        padding:12px;
+
+    }
+
+
+    .winner-photo,
+    .winner-placeholder{
+
+        width:150px;
+        height:180px;
+
+    }
+
+
+    .winner-prize{
+
+        font-size:26px;
+
+    }
+
+
+    .winner-sap{
+
+        font-size:19px;
+
+    }
+
+
+    .winner-coupon{
+
+        font-size:21px;
+
+    }
+
+
+    .winner-mini-info{
+
+        font-size:7px;
+
+    }
+
+}
+
+
+/* ROYAL GOLD EDITION - visual layer only; business logic remains unchanged */
+:root{--rg-bg:#071326;--rg-panel:#101f38;--rg-panel2:#142744;--rg-gold:#e8bd59;--rg-gold2:#fff0b2;--rg-text:#f8f3e5;--rg-muted:#c6cbd5;--rg-border:#8b6a2b}
+html,body{scrollbar-color:#8b6a2b #081326}
+body{background:radial-gradient(ellipse at top,#1b2d4a 0%,#071326 65%,#030812 100%)!important;color:var(--rg-text)!important}
+header,.header{background:linear-gradient(115deg,#050b16,#102442 55%,#070d18)!important;border-bottom:3px solid var(--rg-gold)!important;color:#fff5d4!important;box-shadow:0 8px 28px #0008!important}
+.title,.header-prize-no,.header-title,.total{color:var(--rg-gold2)!important}
+button{border:1px solid #b88c36!important;border-radius:10px!important;box-shadow:0 5px 16px #0005, inset 0 1px #fff2!important;transition:transform .16s ease,filter .16s ease,box-shadow .16s ease!important}
+button:hover{filter:brightness(1.15)!important;box-shadow:0 0 0 2px #e8bd5933,0 8px 22px #0008!important}
+input,select,textarea{background:#08152a!important;color:#fff5d4!important;border:1px solid #8b6a2b!important;border-radius:8px!important}
+input::placeholder,textarea::placeholder{color:#aeb9ca!important}
+.action-bar,.top-bar,.table-container,main,.form-card,.panel,.card,.search-area{background:transparent!important;color:var(--rg-text)!important}
+table{background:#0b1830!important;color:#f7f0dd!important;border-color:#554421!important}
+th{background:linear-gradient(90deg,#6e501a,#bd913b,#72531a)!important;color:#fff5d4!important;border-color:#d2aa55!important}
+td{border-color:#35445c!important;color:#f4ecd8!important}
+tr:nth-child(even) td{background:#101f38!important}
+.box,.winner-card,.employee-card{border-color:#d4a846!important;box-shadow:0 0 14px #d4a84620!important}
+@keyframes rgGlow{0%,100%{box-shadow:0 0 10px #d8ad4b33, inset 0 0 0 1px #e8bd5944}50%{box-shadow:0 0 28px #f2ca65aa, inset 0 0 0 2px #ffecaa}}
+@keyframes rgReveal{0%{transform:scale(.92);opacity:.45;filter:brightness(.7)}60%{transform:scale(1.025);opacity:1;filter:brightness(1.25)}100%{transform:scale(1);filter:brightness(1)}}
+.selected,.winner,.box.selected,.box.winner{animation:rgGlow 1.25s ease-in-out infinite!important;border-color:#ffe6a0!important}
+#winnerArea.show,#winnerArea[style*="display: block"],.winner-photo-box{animation:rgReveal .65s ease-out both}
+.empty{color:#d0c6ad!important}
+a{color:#f1cc70}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="diya">
+            🪔
+        </div>
+
+        <div>
+
+            <div class="title">
+                शुभ दीपावली
+            </div>
+
+            <div class="company">
+                BIRLA CORPORATION
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="current">
+
+        <div class="current-label">
+            CURRENT PRIZE
+        </div>
+
+        <div
+            id="currentNo"
+            class="current-no">
+            10.10
+        </div>
+
+    </div>
+
+
+    <div class="header-buttons">
+
+        <button
+            id="backBtn"
+            class="header-btn back-btn">
+            ⬅ BACK
+        </button>
+
+        <button
+            id="clearBtn"
+            class="header-btn clear-btn">
+            ✖ CLEAR
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     PRIZE GRID
+     ===================================================== -->
+
+<main
+    id="grid"
+    class="grid">
+</main>
+
+
+<!-- =====================================================
+     WINNER DISPLAY
+     ===================================================== -->
+
+<div
+    id="winnerArea"
+    class="winner-area">
+
+    <div class="winner-card">
+
+        <div>
+
+            <img
+                id="winnerPhoto"
+                class="winner-photo"
+                alt="Winner Photo"
+            >
+
+            <div
+                id="winnerPlaceholder"
+                class="winner-placeholder">
+                👤
+            </div>
+
+        </div>
+
+
+        <div class="winner-info">
+
+            <div class="winner-title">
+                🏆 WINNER
+            </div>
+
+
+            <div
+                id="winnerPrize"
+                class="winner-prize">
+                PRIZE NO: -
+            </div>
+
+
+            <div
+                id="winnerSap"
+                class="winner-sap">
+                SAP CODE: -
+            </div>
+
+
+            <div
+                id="winnerCoupon"
+                class="winner-coupon">
+                COUPON NO: -
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   PRIZE LIST
+   ===================================================== */
+
+const prizes = [];
+
+
+for(let i=10; i>=1; i--){
+
+    prizes.push(
+        "10." +
+        String(i).padStart(2,"0")
+    );
+
+}
+
+
+for(let group=9; group>=2; group--){
+
+    for(let i=group; i>=1; i--){
+
+        prizes.push(
+            group + "." + i
+        );
+
+    }
+
+}
+
+
+prizes.push("1.1");
+
+
+/* =====================================================
+   ELEMENTS
+   ===================================================== */
+
+const grid =
+    document.getElementById("grid");
+
+
+const currentNo =
+    document.getElementById("currentNo");
+
+
+const winnerArea =
+    document.getElementById("winnerArea");
+
+
+const winnerPhoto =
+    document.getElementById("winnerPhoto");
+
+
+const winnerPlaceholder =
+    document.getElementById("winnerPlaceholder");
+
+
+const winnerSap =
+    document.getElementById("winnerSap");
+
+
+const winnerCoupon =
+    document.getElementById("winnerCoupon");
+
+
+const winnerPrize =
+    document.getElementById("winnerPrize");
+
+
+let saved = [];
+
+
+/* =====================================================
+   LOAD SAVED PRIZES
+   ===================================================== */
+
+async function load(){
+
+    try{
+
+        const response =
+            await fetch(
+                "/api/prizes",
+                {
+                    cache:"no-store"
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Prize API failed"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        saved =
+            Array.isArray(data.prizes)
+                ? data.prizes
+                : [];
+
+    }
+    catch(error){
+
+        console.error(
+            "Prize load error:",
+            error
+        );
+
+        saved = [];
+
+    }
+
+
+    /* =================================================
+       FIND NEXT AVAILABLE PRIZE
+       ================================================= */
+
+    const savedNumbers =
+        new Set(
+            saved.map(
+                x =>
+                    String(
+                        x.prizeNo ??
+                        x.PrizeNo ??
+                        x.prize ??
+                        ""
+                    ).trim()
+            )
+        );
+
+
+    const nextPrize =
+        prizes.find(
+            p =>
+                !savedNumbers.has(
+                    String(p)
+                )
+        );
+
+
+    if(nextPrize){
+
+        currentNo.textContent =
+            nextPrize;
+
+    }
+    else{
+
+        currentNo.textContent =
+            "COMPLETED";
+
+    }
+
+
+    render();
+
+}
+
+
+/* =====================================================
+   RENDER ALL PRIZE BOXES
+   ===================================================== */
+
+function render(){
+
+    grid.innerHTML = "";
+
+
+    prizes.forEach(prize => {
+
+
+        /* ---------------------------------------------
+           FIND WINNER
+           --------------------------------------------- */
+
+        const winner =
+            saved.find(
+                x =>
+                    String(
+                        x.prizeNo ??
+                        x.PrizeNo ??
+                        x.prize ??
+                        ""
+                    ).trim()
+                    ===
+                    String(prize).trim()
+            );
+
+
+        const box =
+            document.createElement("div");
+
+
+        box.className =
+            "box";
+
+
+        if(winner){
+
+            box.classList.add(
+                "winner"
+            );
+
+        }
+
+
+        let photoHtml = "";
+
+
+        /* ---------------------------------------------
+           WINNER PHOTO
+           --------------------------------------------- */
+
+        if(
+            winner &&
+            winner.photo
+        ){
+
+            const photo =
+                getPhotoUrl(
+                    winner.photo
+                );
+
+
+            if(photo){
+
+                photoHtml = `
+
+                    <div
+                        class="winner-photo-box">
+
+                        <img
+                            src="${escapeHtml(photo)}"
+                            alt="Photo"
+
+                            onerror="
+                                this.style.display='none';
+                            "
+                        >
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+        /* ---------------------------------------------
+           SAP CODE + COUPON NO.
+           --------------------------------------------- */
+
+        let winnerInfoHtml = "";
+
+
+        if(winner){
+
+            const sapCode =
+                winner.sapCode ??
+                winner.SAPCode ??
+                winner.employeeCode ??
+                winner.EmployeeCode ??
+                "-";
+
+
+            const couponNo =
+                winner.couponNo ??
+                winner.CouponNo ??
+                winner.coupon ??
+                winner.Coupon ??
+                winner.couponNumber ??
+                winner.CouponNumber ??
+                "-";
+
+
+            winnerInfoHtml = `
+
+                <div
+                    class="winner-mini-info">
+
+                    <div>
+                        SAP CODE:
+                        ${escapeHtml(sapCode)}
+                    </div>
+
+                    <div>
+                        COUPON NO:
+                        ${escapeHtml(couponNo)}
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* ---------------------------------------------
+           BOX HTML
+           --------------------------------------------- */
+
+        box.innerHTML = `
+
+            <div class="number">
+                ${escapeHtml(prize)}
+            </div>
+
+            ${photoHtml}
+
+            ${winnerInfoHtml}
+
+            ${
+                winner
+                ? ""
+                : `
+                    <div class="status">
+                        AVAILABLE
+                    </div>
+                `
+            }
+
+        `;
+
+
+        /* ---------------------------------------------
+           BOX CLICK
+           --------------------------------------------- */
+
+        box.onclick = () => {
+
+
+            document
+                .querySelectorAll(".box")
+                .forEach(
+                    b =>
+                        b.classList.remove(
+                            "selected"
+                        )
+                );
+
+
+            box.classList.add(
+                "selected"
+            );
+
+
+            currentNo.textContent =
+                prize;
+
+
+            if(winner){
+
+                showWinner(
+                    winner
+                );
+
+            }
+            else{
+
+                hideWinner();
+
+            }
+
+        };
+
+
+        grid.appendChild(
+            box
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   PHOTO URL
+   ===================================================== */
+
+function getPhotoUrl(photo){
+
+    if(!photo){
+
+        return "";
+
+    }
+
+
+    let p =
+        String(photo)
+        .trim();
+
+
+    if(!p){
+
+        return "";
+
+    }
+
+
+    p =
+        p.replace(
+            /\\/g,
+            "/"
+        );
+
+
+    /* Direct URL */
+
+    if(
+        p.startsWith("http://") ||
+        p.startsWith("https://") ||
+        p.startsWith("data:image")
+    ){
+
+        return p;
+
+    }
+
+
+    /* Already web path */
+
+    if(
+        p.startsWith("/photos/")
+    ){
+
+        return p;
+
+    }
+
+
+    if(
+        p.startsWith("photos/")
+    ){
+
+        return "/" + p;
+
+    }
+
+
+    /* Full project path */
+
+    const lower =
+        p.toLowerCase();
+
+
+    const marker =
+        "/public/photos/";
+
+
+    const index =
+        lower.indexOf(
+            marker
+        );
+
+
+    if(index >= 0){
+
+        const fileName =
+            p.substring(
+                index +
+                marker.length
+            );
+
+
+        return (
+            "/photos/" +
+            encodeURIComponent(
+                fileName
+            )
+        );
+
+    }
+
+
+    /* Path contains photos */
+
+    const marker2 =
+        "/photos/";
+
+
+    const index2 =
+        lower.lastIndexOf(
+            marker2
+        );
+
+
+    if(index2 >= 0){
+
+        const fileName =
+            p.substring(
+                index2 +
+                marker2.length
+            );
+
+
+        return (
+            "/photos/" +
+            encodeURIComponent(
+                fileName
+            )
+        );
+
+    }
+
+
+    /* Filename only */
+
+    const fileName =
+        p.split("/")
+        .pop();
+
+
+    if(fileName){
+
+        return (
+            "/photos/" +
+            encodeURIComponent(
+                fileName
+            )
+        );
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
+
+function escapeHtml(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   SHOW WINNER
+   ===================================================== */
+
+function showWinner(winner){
+
+    winnerArea.style.display =
+        "block";
+
+
+    /* Prize */
+
+    winnerPrize.textContent =
+        "PRIZE NO: " +
+        (
+            winner.prizeNo ??
+            winner.PrizeNo ??
+            winner.prize ??
+            "-"
+        );
+
+
+    /* SAP CODE */
+
+    winnerSap.textContent =
+        "SAP CODE: " +
+        (
+            winner.sapCode ??
+            winner.SAPCode ??
+            winner.employeeCode ??
+            winner.EmployeeCode ??
+            "-"
+        );
+
+
+    /* COUPON NO */
+
+    winnerCoupon.textContent =
+        "COUPON NO: " +
+        (
+            winner.couponNo ??
+            winner.CouponNo ??
+            winner.coupon ??
+            winner.Coupon ??
+            winner.couponNumber ??
+            winner.CouponNumber ??
+            "-"
+        );
+
+
+    /* PHOTO */
+
+    const photo =
+        getPhotoUrl(
+            winner.photo
+        );
+
+
+    if(photo){
+
+        winnerPhoto.src =
+            photo;
+
+
+        winnerPhoto.style.display =
+            "block";
+
+
+        winnerPlaceholder.style.display =
+            "none";
+
+
+        winnerPhoto.onerror = () => {
+
+            console.error(
+                "Photo not found:",
+                photo
+            );
+
+
+            winnerPhoto.style.display =
+                "none";
+
+
+            winnerPlaceholder.style.display =
+                "flex";
+
+        };
+
+    }
+    else{
+
+        winnerPhoto.style.display =
+            "none";
+
+
+        winnerPlaceholder.style.display =
+            "flex";
+
+    }
+
+}
+
+
+/* =====================================================
+   HIDE WINNER
+   ===================================================== */
+
+function hideWinner(){
+
+    winnerArea.style.display =
+        "none";
+
+
+    winnerPhoto.style.display =
+        "none";
+
+
+    winnerPlaceholder.style.display =
+        "flex";
+
+
+    winnerPrize.textContent =
+        "PRIZE NO: -";
+
+
+    winnerSap.textContent =
+        "SAP CODE: -";
+
+
+    winnerCoupon.textContent =
+        "COUPON NO: -";
+
+}
+
+
+/* =====================================================
+   BACK BUTTON
+   ===================================================== */
+
+document
+    .getElementById("backBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "/";
+
+        }
+    );
+
+
+/* =====================================================
+   CLEAR ALL PRIZES
+   ===================================================== */
+
+document
+    .getElementById("clearBtn")
+    .addEventListener(
+        "click",
+        async () => {
+
+            const ok =
+                confirm(
+                    "क्या आप सभी saved prizes clear करना चाहते हैं?"
+                );
+
+
+            if(!ok){
+
+                return;
+
+            }
+
+
+            const button =
+                document.getElementById(
+                    "clearBtn"
+                );
+
+
+            try{
+
+                button.disabled = true;
+
+                button.textContent =
+                    "CLEARING...";
+
+
+                const response =
+                    await fetch(
+                        "/api/prizes/clear-all",
+                        {
+                            method:"DELETE",
+                            cache:"no-store"
+                        }
+                    );
+
+
+                const text =
+                    await response.text();
+
+
+                let data = {};
+
+                try{
+
+                    data =
+                        JSON.parse(
+                            text
+                        );
+
+                }
+                catch(e){
+
+                    data = {};
+
+                }
+
+
+                if(!response.ok){
+
+                    throw new Error(
+                        data.message ||
+                        "Clear failed."
+                    );
+
+                }
+
+
+                if(
+                    data.success !== true
+                ){
+
+                    throw new Error(
+                        data.message ||
+                        "Clear failed."
+                    );
+
+                }
+
+
+                saved = [];
+
+
+                hideWinner();
+
+
+                document
+                    .querySelectorAll(".box")
+                    .forEach(
+                        b =>
+                            b.classList.remove(
+                                "selected",
+                                "winner"
+                            )
+                    );
+
+
+                await load();
+
+
+                alert(
+                    "All prizes cleared successfully."
+                );
+
+            }
+            catch(error){
+
+                console.error(
+                    "Clear All Error:",
+                    error
+                );
+
+
+                alert(
+                    "Clear failed: " +
+                    error.message
+                );
+
+            }
+            finally{
+
+                button.disabled = false;
+
+                button.textContent =
+                    "✖ CLEAR";
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   AUTO REFRESH
+   ===================================================== */
+
+setInterval(
+    async () => {
+
+        await load();
+
+    },
+    3000
+);
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+load();
+
+</script>
+
+
+<script>
+/* Royal Gold interaction sound layer. Sounds are synthesized locally; no audio downloads. */
+(function(){
+ let ctx;
+ function tone(freq,duration,when,volume,type){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.type=type||'sine';o.frequency.setValueAtTime(freq,ctx.currentTime+when);g.gain.setValueAtTime(0.0001,ctx.currentTime+when);g.gain.exponentialRampToValueAtTime(volume,ctx.currentTime+when+0.02);g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+when+duration);o.connect(g);g.connect(ctx.destination);o.start(ctx.currentTime+when);o.stop(ctx.currentTime+when+duration+0.03);}catch(e){}}
+ function clickSound(){tone(740,.07,0,.025,'triangle')}
+ function winSound(){tone(523,.18,0,.06);tone(659,.2,.12,.055);tone(784,.26,.25,.055);tone(1047,.42,.4,.06)}
+ document.addEventListener('click',function(e){if(e.target.closest('button'))clickSound()},true);
+ window.RoyalGoldSound={click:clickSound,win:winSound};
+ const winner=document.getElementById('winnerArea');
+ if(winner&&window.MutationObserver){let last='';new MutationObserver(()=>{const now=(winner.innerText||'').trim();if(now&&now!==last&&/\S/.test(now)){last=now;winSound()}}).observe(winner,{subtree:true,childList:true,characterData:true,attributes:true});}
+})();
+</script>
+
+</body>
+
+</html>

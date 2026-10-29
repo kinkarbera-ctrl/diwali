@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Master Data</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#eef5ff;
+    color:#172033;
+}
+
+header{
+    height:70px;
+    background:#183b66;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+    box-shadow:0 3px 12px #0002;
+}
+
+header h1{
+    margin:0;
+    font-size:24px;
+}
+
+.header-buttons{
+    display:flex;
+    gap:10px;
+}
+
+button{
+    border:0;
+    border-radius:7px;
+    padding:11px 16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    opacity:.88;
+}
+
+.back{
+    background:#555;
+    color:white;
+}
+
+.import{
+    background:#7650b9;
+    color:white;
+}
+
+.export{
+    background:#b47b00;
+    color:white;
+}
+
+.add{
+    background:#168a4b;
+    color:white;
+}
+
+.refresh{
+    background:#1976d2;
+    color:white;
+}
+
+.container{
+    padding:22px;
+}
+
+.topbar{
+    background:white;
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 2px 10px #0001;
+    margin-bottom:18px;
+}
+
+.search{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccd5e2;
+    border-radius:7px;
+    font-size:15px;
+}
+
+.form{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 10px #0001;
+    margin-bottom:20px;
+}
+
+.form h2{
+    margin-top:0;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.field label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.field input,
+.field select{
+    width:100%;
+    padding:11px;
+    border:1px solid #ccd5e2;
+    border-radius:6px;
+}
+
+.form-actions{
+    margin-top:18px;
+    display:flex;
+    gap:10px;
+}
+
+.save{
+    background:#168a4b;
+    color:white;
+}
+
+.cancel{
+    background:#777;
+    color:white;
+}
+
+.table-box{
+    background:white;
+    border-radius:12px;
+    overflow:auto;
+    box-shadow:0 2px 10px #0001;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:1200px;
+}
+
+th{
+    background:#183b66;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #e5e9ef;
+}
+
+tr:hover{
+    background:#f4f8ff;
+}
+
+.photo{
+    width:55px;
+    height:55px;
+    object-fit:cover;
+    border-radius:6px;
+    border:1px solid #ddd;
+}
+
+.edit{
+    background:#1976d2;
+    color:white;
+}
+
+.delete{
+    background:#d32f2f;
+    color:white;
+}
+
+.hidden{
+    display:none;
+}
+
+.status{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+@media(max-width:900px){
+    .form-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    header{
+        height:auto;
+        padding:15px;
+        gap:10px;
+        flex-direction:column;
+    }
+
+    .header-buttons{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
+
+/* ROYAL GOLD EDITION - visual layer only; business logic remains unchanged */
+:root{--rg-bg:#071326;--rg-panel:#101f38;--rg-panel2:#142744;--rg-gold:#e8bd59;--rg-gold2:#fff0b2;--rg-text:#f8f3e5;--rg-muted:#c6cbd5;--rg-border:#8b6a2b}
+html,body{scrollbar-color:#8b6a2b #081326}
+body{background:radial-gradient(ellipse at top,#1b2d4a 0%,#071326 65%,#030812 100%)!important;color:var(--rg-text)!important}
+header,.header{background:linear-gradient(115deg,#050b16,#102442 55%,#070d18)!important;border-bottom:3px solid var(--rg-gold)!important;color:#fff5d4!important;box-shadow:0 8px 28px #0008!important}
+.title,.header-prize-no,.header-title,.total{color:var(--rg-gold2)!important}
+button{border:1px solid #b88c36!important;border-radius:10px!important;box-shadow:0 5px 16px #0005, inset 0 1px #fff2!important;transition:transform .16s ease,filter .16s ease,box-shadow .16s ease!important}
+button:hover{filter:brightness(1.15)!important;box-shadow:0 0 0 2px #e8bd5933,0 8px 22px #0008!important}
+input,select,textarea{background:#08152a!important;color:#fff5d4!important;border:1px solid #8b6a2b!important;border-radius:8px!important}
+input::placeholder,textarea::placeholder{color:#aeb9ca!important}
+.action-bar,.top-bar,.table-container,main,.form-card,.panel,.card,.search-area{background:transparent!important;color:var(--rg-text)!important}
+table{background:#0b1830!important;color:#f7f0dd!important;border-color:#554421!important}
+th{background:linear-gradient(90deg,#6e501a,#bd913b,#72531a)!important;color:#fff5d4!important;border-color:#d2aa55!important}
+td{border-color:#35445c!important;color:#f4ecd8!important}
+tr:nth-child(even) td{background:#101f38!important}
+.box,.winner-card,.employee-card{border-color:#d4a846!important;box-shadow:0 0 14px #d4a84620!important}
+@keyframes rgGlow{0%,100%{box-shadow:0 0 10px #d8ad4b33, inset 0 0 0 1px #e8bd5944}50%{box-shadow:0 0 28px #f2ca65aa, inset 0 0 0 2px #ffecaa}}
+@keyframes rgReveal{0%{transform:scale(.92);opacity:.45;filter:brightness(.7)}60%{transform:scale(1.025);opacity:1;filter:brightness(1.25)}100%{transform:scale(1);filter:brightness(1)}}
+.selected,.winner,.box.selected,.box.winner{animation:rgGlow 1.25s ease-in-out infinite!important;border-color:#ffe6a0!important}
+#winnerArea.show,#winnerArea[style*="display: block"],.winner-photo-box{animation:rgReveal .65s ease-out both}
+.empty{color:#d0c6ad!important}
+a{color:#f1cc70}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>👥 MASTER DATA</h1>
+
+<div class="header-buttons">
+
+<button class="back" id="backBtn">
+⬅ BACK
+</button>
+
+<button class="import" id="importBtn">
+📥 EXCEL IMPORT
+</button>
+
+<button class="export" id="templateBtn">
+📄 DOWNLOAD TEMPLATE
+</button>
+
+<button class="export" id="exportBtn">
+📤 EXCEL EXPORT
+</button>
+
+<button class="refresh" id="refreshBtn">
+🔄 REFRESH
+</button>
+
+<button class="add" id="addBtn">
+➕ ADD EMPLOYEE
+</button>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="topbar">
+
+<input
+id="searchBox"
+class="search"
+placeholder="Search Coupon No / Employee Code / SAP Code / Name / Department / Unit..."
+>
+
+</div>
+
+<div class="form hidden" id="employeeForm">
+
+<h2 id="formTitle">Add Employee</h2>
+
+<div class="form-grid">
+
+<div class="field">
+<label>COUPON NO</label>
+<input id="fCoupon" placeholder="Coupon No">
+</div>
+
+<div class="field">
+<label>EMPLOYEE CODE</label>
+<input id="fEmployeeCode" placeholder="Employee Code">
+</div>
+
+<div class="field">
+<label>SAP CODE</label>
+<input id="fSap" placeholder="SAP Code">
+</div>
+
+<div class="field">
+<label>EMPLOYEE NAME</label>
+<input id="fName" placeholder="Employee Name">
+</div>
+
+<div class="field">
+<label>COUPON HOLDER NAME</label>
+<input id="fCouponHolderName" placeholder="Coupon Holder Name">
+</div>
+
+<div class="field">
+<label>DEPARTMENT</label>
+<input id="fDepartment" placeholder="Department">
+</div>
+
+<div class="field">
+<label>DESIGNATION</label>
+<input id="fDesignation" placeholder="Designation">
+</div>
+
+<div class="field">
+<label>UNIT</label>
+<input id="fUnit" placeholder="Unit">
+</div>
+
+<div class="field">
+<label>PHOTO</label>
+<input id="fPhoto" placeholder="Photo path / URL">
+</div>
+
+</div>
+
+<div class="form-actions">
+
+<button class="save" id="saveBtn">
+💾 SAVE EMPLOYEE
+</button>
+
+<button class="cancel" id="cancelBtn">
+✖ CANCEL
+</button>
+
+</div>
+
+<div class="status" id="formStatus"></div>
+
+</div>
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Coupon No</th>
+<th>Coupon Holder Name</th>
+<th>Employee Code</th>
+<th>SAP Code</th>
+<th>Employee Name</th>
+<th>Department</th>
+<th>Designation</th>
+<th>Unit</th>
+<th>Photo</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="employeeTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<input
+id="excelFile"
+type="file"
+accept=".xlsx,.xls"
+style="display:none"
+>
+
+<script>
+
+let employees=[];
+let editId=null;
+
+const form=
+document.getElementById("employeeForm");
+
+const table=
+document.getElementById("employeeTable");
+
+const searchBox=
+document.getElementById("searchBox");
+
+function el(id){
+    return document.getElementById(id);
+}
+
+function showForm(){
+    form.classList.remove("hidden");
+}
+
+function hideForm(){
+    form.classList.add("hidden");
+    editId=null;
+    el("formTitle").textContent="Add Employee";
+
+    el("fCoupon").value="";
+    el("fEmployeeCode").value="";
+    el("fSap").value="";
+    el("fName").value="";
+    el("fCouponHolderName").value="";
+    el("fDepartment").value="";
+    el("fDesignation").value="";
+    el("fUnit").value="";
+    el("fPhoto").value="";
+    el("formStatus").textContent="";
+}
+
+async function loadEmployees(){
+
+    try{
+
+        const response=
+            await fetch("/api/employees");
+
+        const data = await response.json();
+        if(!response.ok || data.success === false){
+            throw new Error(data.message || "Employee API error");
+        }
+
+        employees=
+            Array.isArray(data)
+            ? data
+            : (data.employees || []);
+
+        render();
+
+    }catch(error){
+
+        console.error(error);
+
+        table.innerHTML=
+            '<tr><td colspan="10">Employee data load nahi ho saka.</td></tr>';
+    }
+}
+
+function getPhoto(photo){
+
+    if(!photo) return "";
+
+    let p=String(photo).trim();
+
+    if(
+        p.startsWith("http://") ||
+        p.startsWith("https://") ||
+        p.startsWith("data:image") ||
+        p.startsWith("/")
+    ){
+        return p;
+    }
+
+    p=p.replace(/\\/g,"/");
+
+    if(p.startsWith("photos/")){
+        return "/"+p;
+    }
+
+    return "/"+p;
+}
+
+function render(){
+
+    const q=
+        searchBox.value
+        .trim()
+        .toLowerCase();
+
+    const list=
+        employees.filter(e=>{
+
+            const text=[
+                e.couponNo,
+                e.employeeCode,
+                e.sapCode,
+                e.name,
+                e.employeeName,
+                e.couponHolderName,
+                e.accountHolderName,
+                e.department,
+                e.designation,
+                e.unit
+            ]
+            .join(" ")
+            .toLowerCase();
+
+            return text.includes(q);
+        });
+
+    table.innerHTML="";
+
+    if(!list.length){
+
+        table.innerHTML=
+            '<tr><td colspan="10">No employee found.</td></tr>';
+
+        return;
+    }
+
+    list.forEach(employee=>{
+
+        const tr=
+            document.createElement("tr");
+
+        const photo=
+            getPhoto(employee.photo);
+
+        tr.innerHTML=`
+
+            <td>${employee.couponNo || "-"}</td>
+
+            <td>${employee.couponHolderName || employee.accountHolderName || "-"}</td>
+
+            <td>${employee.employeeCode || "-"}</td>
+
+            <td>${employee.sapCode || "-"}</td>
+
+            <td>${employee.employeeName || employee.name || "-"}</td>
+
+            <td>${employee.department || "-"}</td>
+
+            <td>${employee.designation || "-"}</td>
+
+            <td>${employee.unit || "-"}</td>
+
+            <td>
+                ${
+                    photo
+                    ? `<img
+                        class="photo"
+                        src="${photo}"
+                        onerror="this.style.display='none'"
+                       >`
+                    : "-"
+                }
+            </td>
+
+            <td>
+
+                <button
+                    class="edit"
+                    onclick="editEmployee(${employee.id})">
+                    ✏ EDIT
+                </button>
+
+                <button
+                    class="delete"
+                    onclick="deleteEmployee(${employee.id})">
+                    🗑 DELETE
+                </button>
+
+            </td>
+        `;
+
+        table.appendChild(tr);
+    });
+}
+
+el("addBtn").onclick=()=>{
+    hideForm();
+    showForm();
+    el("fCoupon").focus();
+};
+
+el("cancelBtn").onclick=()=>{
+    hideForm();
+};
+
+el("refreshBtn").onclick=()=>{
+    loadEmployees();
+};
+
+el("backBtn").onclick=()=>{
+    window.location.href="/";
+};
+
+searchBox.addEventListener(
+    "input",
+    render
+);
+
+el("saveBtn").onclick=async()=>{
+
+    const body={
+
+        couponNo:
+            el("fCoupon").value.trim(),
+
+        employeeCode:
+            el("fEmployeeCode").value.trim(),
+
+        sapCode:
+            el("fSap").value.trim(),
+
+        name: el("fName").value.trim(),
+
+        couponHolderName: el("fCouponHolderName").value.trim(),
+
+        department:
+            el("fDepartment").value.trim(),
+
+        designation:
+            el("fDesignation").value.trim(),
+
+        unit:
+            el("fUnit").value.trim(),
+
+        photo:
+            el("fPhoto").value.trim()
+    };
+
+    if(!body.couponNo){
+
+        alert("Coupon No enter kijiye.");
+        return;
+    }
+
+    if(!body.name){
+
+        alert("Employee Name enter kijiye.");
+        return;
+    }
+
+    try{
+
+        let url=
+            "/api/employees";
+
+        let method="POST";
+
+        if(editId){
+
+            url=
+                "/api/employees/"+editId;
+
+            method="PUT";
+        }
+
+        const response=
+            await fetch(url,{
+                method:method,
+                headers:{
+                    "Content-Type":
+                        "application/json"
+                },
+                body:
+                    JSON.stringify(body)
+            });
+
+        const data=
+            await response.json();
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Save failed"
+            );
+        }
+
+        alert(
+            editId
+            ? "Employee updated successfully."
+            : "Employee added successfully."
+        );
+
+        hideForm();
+
+        await loadEmployees();
+
+    }catch(error){
+
+        alert(
+            "SAVE ERROR: "+
+            error.message
+        );
+    }
+};
+
+window.editEmployee=async function(id){
+
+    const employee=
+        employees.find(
+            e=>String(e.id)===String(id)
+        );
+
+    if(!employee){
+        alert("Employee nahi mila.");
+        return;
+    }
+
+    editId=employee.id;
+
+    el("formTitle").textContent=
+        "Edit Employee";
+
+    el("fCoupon").value=
+        employee.couponNo || "";
+
+    el("fEmployeeCode").value=
+        employee.employeeCode || "";
+
+    el("fSap").value=
+        employee.sapCode || "";
+
+    el("fName").value=
+        employee.employeeName ||
+        employee.name ||
+        "";
+
+    el("fCouponHolderName").value = employee.couponHolderName || employee.accountHolderName || "";
+
+    el("fDepartment").value=
+        employee.department || "";
+
+    el("fDesignation").value=
+        employee.designation || "";
+
+    el("fUnit").value=
+        employee.unit || "";
+
+    el("fPhoto").value=
+        employee.photo || "";
+
+    showForm();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+};
+
+window.deleteEmployee=async function(id){
+
+    const employee=
+        employees.find(
+            e=>String(e.id)===String(id)
+        );
+
+    if(!employee){
+        return;
+    }
+
+    const name=
+        employee.employeeName ||
+        employee.name ||
+        "this employee";
+
+    const ok=
+        confirm(
+            "Kya aap "+name+
+            " ko delete karna chahte hain?"
+        );
+
+    if(!ok){
+        return;
+    }
+
+    try{
+
+        const response=
+            await fetch(
+                "/api/employees/"+id,
+                {
+                    method:"DELETE"
+                }
+            );
+
+        const data=
+            await response.json();
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Delete failed"
+            );
+        }
+
+        alert(
+            "Employee deleted successfully."
+        );
+
+        await loadEmployees();
+
+    }catch(error){
+
+        alert(
+            "DELETE ERROR: "+
+            error.message
+        );
+    }
+};
+
+/* EXCEL TEMPLATE DOWNLOAD */
+
+el("templateBtn").onclick=()=>{
+    window.location.href="/api/employees/template";
+};
+
+/* EXCEL EXPORT */
+
+el("exportBtn").onclick=()=>{
+
+    window.location.href=
+        "/api/employees/export";
+};
+
+/* EXCEL IMPORT */
+
+el("importBtn").onclick=()=>{
+
+    el("excelFile").click();
+};
+
+el("excelFile").addEventListener(
+    "change",
+    function(){
+
+        const file=
+            this.files[0];
+
+        if(!file){
+            return;
+        }
+
+        const reader=
+            new FileReader();
+
+        reader.onload=async function(){
+
+            try{
+
+                const response=
+                    await fetch(
+                        "/api/employees/import",
+                        {
+                            method:"POST",
+                            headers:{
+                                "Content-Type":
+                                    "application/octet-stream"
+                            },
+                            body:
+                                reader.result
+                        }
+                    );
+
+                const data=
+                    await response.json();
+
+                if(!response.ok){
+
+                    throw new Error(
+                        data.message ||
+                        "Excel import failed"
+                    );
+                }
+
+                alert(
+                    "Excel Import Complete\n\n"+
+                    "Added: "+
+                    (data.added || 0)+
+                    "\nSkipped: "+
+                    (data.skipped || 0)
+                );
+
+                el("excelFile").value="";
+
+                await loadEmployees();
+
+            }catch(error){
+
+                alert(
+                    "Excel Import Error: "+
+                    error.message
+                );
+            }
+        };
+
+        reader.readAsArrayBuffer(file);
+    }
+);
+
+loadEmployees();
+
+</script>
+
+
+<script>
+/* Royal Gold interaction sound layer. Sounds are synthesized locally; no audio downloads. */
+(function(){
+ let ctx;
+ function tone(freq,duration,when,volume,type){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.type=type||'sine';o.frequency.setValueAtTime(freq,ctx.currentTime+when);g.gain.setValueAtTime(0.0001,ctx.currentTime+when);g.gain.exponentialRampToValueAtTime(volume,ctx.currentTime+when+0.02);g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+when+duration);o.connect(g);g.connect(ctx.destination);o.start(ctx.currentTime+when);o.stop(ctx.currentTime+when+duration+0.03);}catch(e){}}
+ function clickSound(){tone(740,.07,0,.025,'triangle')}
+ function winSound(){tone(523,.18,0,.06);tone(659,.2,.12,.055);tone(784,.26,.25,.055);tone(1047,.42,.4,.06)}
+ document.addEventListener('click',function(e){if(e.target.closest('button'))clickSound()},true);
+ window.RoyalGoldSound={click:clickSound,win:winSound};
+ const winner=document.getElementById('winnerArea');
+ if(winner&&window.MutationObserver){let last='';new MutationObserver(()=>{const now=(winner.innerText||'').trim();if(now&&now!==last&&/\S/.test(now)){last=now;winSound()}}).observe(winner,{subtree:true,childList:true,characterData:true,attributes:true});}
+})();
+</script>
+
+</body>
+</html>
+
