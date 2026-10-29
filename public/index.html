@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0"
+>
+
+<title>
+Birla Corporation - Diwali Prize
+</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+}
+
+body{
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(
+        circle at top,
+        #fffaf0 0%,
+        #fff3d2 45%,
+        #ffe5a5 100%
+    );
+
+    color:#3b2100;
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.header{
+
+    height:125px;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items:center;
+
+    padding:
+        10px 32px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #7c0000,
+        #b20d00,
+        #7c0000
+    );
+
+    border-bottom:
+        4px solid #f2c14e;
+
+    box-shadow:
+        0 4px 15px #0004;
+
+    color:white;
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+}
+
+.diya{
+
+    font-size:50px;
+
+    line-height:1;
+
+    filter:
+    drop-shadow(
+        0 0 8px #ffd34d
+    );
+}
+
+.title{
+
+    font-size:34px;
+
+    font-weight:900;
+
+    color:#ffe49a;
+}
+
+.company{
+
+    margin-top:5px;
+
+    font-size:14px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+}
+
+.header-prize{
+
+    text-align:center;
+}
+
+.header-prize-label{
+
+    font-size:14px;
+
+    font-weight:900;
+
+    color:#ffd76a;
+}
+
+.header-prize-no{
+
+    margin-top:3px;
+
+    font-size:46px;
+
+    line-height:1;
+
+    font-weight:900;
+
+    color:white;
+}
+
+.header-actions{
+
+    justify-self:end;
+
+    display:flex;
+
+    gap:10px;
+}
+
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+button{
+
+    border:0;
+
+    border-radius:9px;
+
+    min-height:48px;
+
+    padding:
+        0 17px;
+
+    font-weight:900;
+
+    color:white;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 3px 8px #0004;
+
+    transition:
+        transform .12s,
+        filter .12s;
+}
+
+button:hover{
+
+    filter:brightness(1.1);
+
+    transform:
+        translateY(-1px);
+}
+
+button:active{
+
+    transform:
+        translateY(1px);
+}
+
+.btn-display{
+
+    background:
+    linear-gradient(
+        135deg,
+        #703cc0,
+        #482487
+    );
+}
+
+.btn-settings{
+
+    background:
+    linear-gradient(
+        135deg,
+        #e0a617,
+        #a96d00
+    );
+}
+
+.btn-search{
+
+    background:
+    linear-gradient(
+        135deg,
+        #148b53,
+        #075f37
+    );
+}
+
+.btn-save{
+
+    background:
+    linear-gradient(
+        135deg,
+        #bb1729,
+        #7b0715
+    );
+}
+
+.btn-clear{
+
+    background:
+    linear-gradient(
+        135deg,
+        #e18c18,
+        #bd5f00
+    );
+}
+
+.btn-master{
+
+    background:
+    linear-gradient(
+        135deg,
+        #d49b13,
+        #9d6800
+    );
+}
+
+.btn-result{
+
+    background:
+    linear-gradient(
+        135deg,
+        #7148c1,
+        #4b288f
+    );
+}
+
+
+/* ==========================================================
+   ACTION BAR
+========================================================== */
+
+.action-bar{
+
+    height:82px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:
+        13px 25px;
+
+    background:#fff;
+
+    border-bottom:
+        2px solid #e0bd63;
+}
+
+.search-area{
+
+    flex:1;
+
+    display:flex;
+
+    gap:7px;
+}
+
+.search-input{
+
+    flex:1;
+
+    min-width:100px;
+
+    height:50px;
+
+    border:
+        2px solid #cbb071;
+
+    border-radius:9px;
+
+    padding:
+        0 15px;
+
+    font-size:17px;
+
+    outline:none;
+
+    background:#fffdf7;
+}
+
+.search-input:focus{
+
+    border-color:#bd8200;
+
+    box-shadow:
+        0 0 0 3px #e8b53130;
+}
+
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.content{
+
+    height:
+        calc(
+            100vh - 207px
+        );
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:45px;
+
+    padding:
+        28px 50px;
+}
+
+.section-title{
+
+    margin:
+        0 0 18px;
+
+    padding-bottom:
+        10px;
+
+    border-bottom:
+        3px solid #a40000;
+
+    color:#720000;
+
+    font-size:24px;
+
+    font-weight:900;
+}
+
+.employee-detail-cards{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:16px;
+
+    margin-top:10px;
+}
+
+.detail-card{
+
+    min-height:105px;
+
+    padding:16px 22px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    box-shadow:
+        0 6px 16px #0003,
+        inset 0 0 18px #ffffff35;
+
+    border:3px solid #ffffff70;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.detail-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+
+    height:120px;
+
+    right:-45px;
+
+    top:-55px;
+
+    border-radius:50%;
+
+    background:#ffffff20;
+}
+
+.detail-label{
+
+    font-size:14px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    color:white;
+
+    margin-bottom:5px;
+}
+
+.detail-value{
+
+    font-size:32px;
+
+    line-height:1.1;
+
+    font-weight:900;
+
+    color:white;
+
+    text-shadow:
+        0 2px 4px #0005;
+
+    word-break:break-word;
+}
+
+.name-card{
+
+    background:
+    linear-gradient(
+        135deg,
+        #a90000,
+        #e34219,
+        #ff8c00
+    );
+}
+
+.sap-card{
+
+    background:
+    linear-gradient(
+        135deg,
+        #075b91,
+        #0086b8,
+        #00a6a6
+    );
+}
+
+.prize-card{
+
+    background:
+    linear-gradient(
+        135deg,
+        #704000,
+        #c78300,
+        #f0b900
+    );
+}
+
+@media(max-width:800px){
+
+    .detail-card{
+        min-height:90px;
+    }
+
+    .detail-value{
+        font-size:25px;
+    }
+}
+
+
+/* ==========================================================
+   PHOTO
+========================================================== */
+
+.photo-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-height:0;
+}
+
+.photo-name{
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:900;
+
+    color:#a40000;
+
+    margin-bottom:8px;
+}
+
+.photo-box{
+
+    flex:1;
+
+    min-height:0;
+
+    width:100%;
+
+    max-height:calc(100vh - 340px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    border:
+        3px solid #d5a52e;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fff4d5
+        );
+
+    box-shadow:
+        inset 0 0 30px #d7a00022,
+        0 4px 12px #0002;
+}
+
+.photo-box img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    display:none;
+}
+
+.photo-placeholder{
+
+    text-align:center;
+
+    color:#b49a64;
+
+    font-size:60px;
+}
+
+.photo-placeholder span{
+
+    display:block;
+
+    font-size:16px;
+
+    font-weight:800;
+}
+
+
+/* ==========================================================
+   MESSAGE
+========================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#0008;
+
+    z-index:10000;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+
+    width:440px;
+
+    max-width:90%;
+
+    padding:25px;
+
+    border-radius:14px;
+
+    background:#fffaf0;
+
+    border:
+        3px solid #d9a52b;
+
+    box-shadow:
+        0 15px 45px #0007;
+}
+
+.modal-box h2{
+
+    margin-top:0;
+
+    color:#950000;
+}
+
+.modal-box button{
+
+    width:100%;
+
+    margin-top:12px;
+}
+
+
+
+/* FESTIVE PREMIUM DIWALI THEME — visual-only update */
+:root{color-scheme:light;--navy:#06164b;--blue:#075bb7;--gold:#ffd66b;--violet:#3b087b;}
+body{background:radial-gradient(circle at 15% 0%,#1b4b9b 0%,#08184e 42%,#f3f7ff 42.2%,#e9f1ff 100%);color:#10254c;}
+.header{position:relative;isolation:isolate;height:142px;padding:8px 24px;background:linear-gradient(105deg,#040c3b 0%,#082c78 45%,#330765 100%);border-bottom:4px solid #ffc64d;box-shadow:0 6px 24px #020a2e88;overflow:hidden;}
+.header:before{content:"✦  ·  ✧      ✦   ·   ✧     ✦     ·    ✦";position:absolute;inset:8px 0 auto 0;height:100%;color:#ffd86e;font-size:25px;letter-spacing:20px;opacity:.32;pointer-events:none;z-index:-1;animation:twinkle 3s ease-in-out infinite alternate;}
+.header:after{content:"HAPPY DIWALI  ✨  FESTIVAL OF LIGHTS";position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:5px;color:#ffe6a0;opacity:.85;pointer-events:none;}
+@keyframes twinkle{from{opacity:.18;filter:brightness(.8)}to{opacity:.55;filter:brightness(1.5)}}
+.brand,.header-prize,.header-actions{position:relative;z-index:1;}
+.title{font-size:clamp(24px,3vw,36px);color:#ffda78;text-shadow:0 2px 14px #ff9d18aa;}
+.company{color:#fff;letter-spacing:2.5px;}
+.diya-animation{width:78px;height:80px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 12px #ffb42c);}
+.diya-animation img{width:110px;height:80px;object-fit:contain;}
+.header-prize-label{color:#ffdf82;letter-spacing:3px;}
+.header-prize-no{color:#fff5d2;text-shadow:0 0 18px #ffb82e;}
+button{border-radius:10px;box-shadow:0 4px 12px #071a4b35;border:1px solid #ffffff30;}
+.btn-display{background:linear-gradient(135deg,#5725a5,#2a166f);}
+.btn-settings{background:linear-gradient(135deg,#ffc64f,#b86b05);color:#241342;}
+.btn-search{background:linear-gradient(135deg,#0e9b85,#076b67);}
+.btn-save{background:linear-gradient(135deg,#0878d1,#064da2);}
+.btn-clear{background:linear-gradient(135deg,#ed9c28,#c35c12);}
+.btn-master{background:linear-gradient(135deg,#225fc3,#143780);}
+.btn-result{background:linear-gradient(135deg,#a528a7,#5d167d);}
+.action-bar{background:linear-gradient(90deg,#eaf2ff,#fff9e9,#f1eaff);border-bottom:1px solid #c7d7f3;box-shadow:0 5px 18px #0a245018;}
+.search-input,input,select{border:1px solid #c5d5ef!important;border-radius:9px!important;background:#fbfdff!important;color:#10254c!important;}
+.content{background:linear-gradient(135deg,#ffffffef,#f5f8ffed);border:1px solid #d4e0f5;border-radius:16px;box-shadow:0 12px 34px #071b4b20;}
+.section-title{color:#103b7b;border-bottom:2px solid #e5b74c;padding-bottom:12px;}
+.detail-card,.photo-section,.panel,.modal-box{border:1px solid #d9e4f7!important;border-radius:14px!important;box-shadow:0 7px 20px #0b2c6012!important;}
+@media(max-width:850px){.header{height:auto;min-height:118px;grid-template-columns:1fr auto;padding:8px 12px}.header-prize{display:none}.title{font-size:24px}.company{font-size:11px}.header-actions{gap:5px}.header-actions button{padding:0 8px;min-height:38px}.diya-animation{width:54px}.diya-animation img{width:78px}}
+
+
+
+/* ===== FULL FESTIVE REDESIGN: new layout, not only recolored ===== */
+:root{--night:#071641;--blue:#0d3d87;--gold:#ffc94f;--cream:#fffaf0;--ink:#10264a;--line:#d5e2f5}
+html,body{min-height:100%;height:100%;background:#edf3fc;color:var(--ink)}
+body{overflow:hidden;font-family:Inter,"Segoe UI",Arial,sans-serif;background:radial-gradient(ellipse at 80% 10%,#fff9e8 0,#edf3fc 55%,#e4ebfa 100%)}
+.header{height:150px;position:relative;isolation:isolate;overflow:hidden;grid-template-columns:minmax(280px,1fr) auto minmax(240px,1fr);padding:14px 28px;background:radial-gradient(circle at 20% 15%,#193c91 0,transparent 27%),radial-gradient(circle at 82% 20%,#6b1ca5 0,transparent 24%),linear-gradient(110deg,#050d37,#102c76 52%,#160d4d);border-bottom:4px solid #ffc94f;box-shadow:0 8px 25px #0b1e4d40}
+.header:before{content:"✦  ·  ✧  ·  ✦       ✨      ·  ✧  ·  ✦";position:absolute;inset:8px 0 auto;color:#ffd45e;letter-spacing:20px;font-size:21px;opacity:.8;white-space:nowrap;z-index:-1;animation:sparkle 5s ease-in-out infinite alternate}
+.header:after{content:"🪔   ✨   🪔";position:absolute;right:26%;bottom:-5px;font-size:31px;filter:drop-shadow(0 0 12px #ffbd39);opacity:.9;pointer-events:none}
+@keyframes sparkle{from{opacity:.35;transform:translateX(-8px)}to{opacity:1;transform:translateX(8px)}}
+.brand{gap:16px}.diya-animation{width:76px;height:76px;display:grid;place-items:center;overflow:visible}.diya-animation img{width:108px;height:108px;object-fit:contain;filter:drop-shadow(0 0 12px #ffbc3c)}
+.title{font-size:clamp(27px,3vw,43px);line-height:1.12;font-weight:900;letter-spacing:.5px;color:#ffdc78;text-shadow:0 2px 0 #7b4100,0 0 22px #ffb52866}.company{font-size:12px;letter-spacing:3px;color:#fff3c9;margin-top:8px}.header-prize{padding:11px 25px;border:1px solid #ffe08c66;border-radius:18px;background:#ffffff12;box-shadow:inset 0 0 20px #fff1}.header-prize-label{letter-spacing:3px;color:#ffdb75}.header-prize-no{font-size:48px;color:white;text-shadow:0 0 15px #ffce50}.header-actions{z-index:2}.header-actions button{border:1px solid #ffffff35;border-radius:12px;min-height:44px}
+.action-bar{height:auto;position:fixed;left:0;top:154px;bottom:0;width:246px;z-index:5;display:flex;flex-direction:column;align-items:stretch;gap:10px;padding:20px 13px 24px;background:linear-gradient(180deg,#061744,#0b2c70 62%,#291064);border:0;border-right:1px solid #ffc94f66;box-shadow:7px 0 24px #0b1c4830;overflow-y:auto}
+.action-bar:before{content:"🪔  SHUBH DEEPAWALI";display:block;color:#ffdf87;text-align:center;font-weight:900;letter-spacing:1px;font-size:15px;padding:4px 0 14px;border-bottom:1px solid #ffffff20;margin-bottom:3px}
+.search-area{display:flex;flex-direction:column;gap:7px;flex:none;padding-bottom:8px;border-bottom:1px solid #ffffff25;margin-bottom:3px}.search-input{height:43px;min-height:43px;width:100%;font-size:13px;border:1px solid #b9d1f5;border-radius:10px;background:#f7faff}.action-bar button{width:100%;min-height:47px;text-align:left;padding:0 14px;border:1px solid #ffffff20;border-radius:11px;box-shadow:0 5px 12px #0002;font-size:13px;letter-spacing:.1px}.action-bar button:hover{transform:translateX(3px);filter:brightness(1.12)}.btn-search{background:linear-gradient(100deg,#138c7a,#08725c)}.btn-save{background:linear-gradient(100deg,#f2a51e,#d66b0d)}.btn-clear{background:linear-gradient(100deg,#65789b,#425477)}.btn-master{background:linear-gradient(100deg,#1a68ba,#234a9a)}.btn-result{background:linear-gradient(100deg,#8149cf,#5623a0)}
+.content{height:calc(100vh - 174px);margin-left:246px;display:grid;grid-template-columns:minmax(280px,.85fr) minmax(300px,1.15fr);gap:22px;padding:25px 27px 28px;overflow:auto;align-items:stretch}.content>section{min-width:0;padding:23px;background:#ffffffed;border:1px solid #d8e4f5;border-radius:19px;box-shadow:0 12px 35px #17366d16;position:relative;overflow:hidden}.content>section:after{content:"✧";position:absolute;right:18px;bottom:3px;font-size:100px;line-height:1;color:#e8eef9;pointer-events:none;z-index:0}.section-title{font-size:20px;color:#123b7a;border-bottom:0;padding:0 0 14px;margin-bottom:18px;position:relative}.section-title:after{content:"";position:absolute;bottom:0;left:0;width:76px;height:4px;border-radius:4px;background:linear-gradient(90deg,#f7a51d,#ffda75)}.employee-detail-cards{gap:13px}.detail-card{border:1px solid #dce7f7!important;border-radius:14px!important;background:linear-gradient(135deg,#fff,#f3f7ff)!important;box-shadow:0 7px 18px #16376a0d!important;padding:19px 20px;position:relative;z-index:1}.detail-label{color:#577094;font-size:12px;letter-spacing:1px}.detail-value{color:#123b7a;font-size:22px;font-weight:800}.photo-section{text-align:center}.photo-name{font-size:23px;color:#123b7a}.photo-box{min-height:320px;border:2px dashed #b8cbe9;border-radius:17px;background:radial-gradient(circle at 50% 25%,#fff9e6,#f0f5ff 65%);display:flex;align-items:center;justify-content:center;overflow:hidden}.photo-box img{max-width:100%;max-height:390px;object-fit:contain;border-radius:14px;box-shadow:0 10px 24px #0a245226}.photo-placeholder{font-size:80px;color:#b7c8e1}
+button{transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}button:focus-visible,input:focus-visible{outline:3px solid #ffc94f;outline-offset:2px}.modal-box{border-radius:20px!important;box-shadow:0 25px 80px #06143b55!important}
+@media(max-width:1000px){.header{grid-template-columns:1fr auto;height:130px;padding:10px 16px}.header-prize{display:none}.header:after{right:30%}.action-bar{top:134px;width:205px}.content{margin-left:205px;grid-template-columns:1fr;padding:16px;gap:14px;height:calc(100vh - 134px)}.content>section{padding:18px}.diya-animation img{width:88px;height:88px}}
+@media(max-width:650px){body{overflow:auto}.header{height:auto;min-height:104px;grid-template-columns:1fr;padding:10px 12px}.brand{gap:8px}.diya-animation{width:48px;height:48px}.diya-animation img{width:68px;height:68px}.title{font-size:25px}.company{font-size:10px;letter-spacing:1.5px}.header-actions{justify-self:start;margin-top:8px}.header-actions button{min-height:36px;font-size:11px}.header:after{display:none}.action-bar{position:relative;top:auto;bottom:auto;width:100%;display:grid;grid-template-columns:1fr 1fr;padding:12px;gap:7px}.action-bar:before{grid-column:1/-1;padding:3px 0}.search-area{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;border:0;margin:0;padding:0}.search-area button{width:auto}.action-bar button{min-height:42px;padding:0 9px;font-size:11px}.content{height:auto;min-height:unset;margin:0;overflow:visible;grid-template-columns:1fr;padding:12px}.content>section{padding:16px}.photo-box{min-height:240px}.header-prize{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+
+/* ROYAL GOLD EDITION - visual layer only; business logic remains unchanged */
+:root{--rg-bg:#071326;--rg-panel:#101f38;--rg-panel2:#142744;--rg-gold:#e8bd59;--rg-gold2:#fff0b2;--rg-text:#f8f3e5;--rg-muted:#c6cbd5;--rg-border:#8b6a2b}
+html,body{scrollbar-color:#8b6a2b #081326}
+body{background:radial-gradient(ellipse at top,#1b2d4a 0%,#071326 65%,#030812 100%)!important;color:var(--rg-text)!important}
+header,.header{background:linear-gradient(115deg,#050b16,#102442 55%,#070d18)!important;border-bottom:3px solid var(--rg-gold)!important;color:#fff5d4!important;box-shadow:0 8px 28px #0008!important}
+.title,.header-prize-no,.header-title,.total{color:var(--rg-gold2)!important}
+button{border:1px solid #b88c36!important;border-radius:10px!important;box-shadow:0 5px 16px #0005, inset 0 1px #fff2!important;transition:transform .16s ease,filter .16s ease,box-shadow .16s ease!important}
+button:hover{filter:brightness(1.15)!important;box-shadow:0 0 0 2px #e8bd5933,0 8px 22px #0008!important}
+input,select,textarea{background:#08152a!important;color:#fff5d4!important;border:1px solid #8b6a2b!important;border-radius:8px!important}
+input::placeholder,textarea::placeholder{color:#aeb9ca!important}
+.action-bar,.top-bar,.table-container,main,.form-card,.panel,.card,.search-area{background:transparent!important;color:var(--rg-text)!important}
+table{background:#0b1830!important;color:#f7f0dd!important;border-color:#554421!important}
+th{background:linear-gradient(90deg,#6e501a,#bd913b,#72531a)!important;color:#fff5d4!important;border-color:#d2aa55!important}
+td{border-color:#35445c!important;color:#f4ecd8!important}
+tr:nth-child(even) td{background:#101f38!important}
+.box,.winner-card,.employee-card{border-color:#d4a846!important;box-shadow:0 0 14px #d4a84620!important}
+@keyframes rgGlow{0%,100%{box-shadow:0 0 10px #d8ad4b33, inset 0 0 0 1px #e8bd5944}50%{box-shadow:0 0 28px #f2ca65aa, inset 0 0 0 2px #ffecaa}}
+@keyframes rgReveal{0%{transform:scale(.92);opacity:.45;filter:brightness(.7)}60%{transform:scale(1.025);opacity:1;filter:brightness(1.25)}100%{transform:scale(1);filter:brightness(1)}}
+.selected,.winner,.box.selected,.box.winner{animation:rgGlow 1.25s ease-in-out infinite!important;border-color:#ffe6a0!important}
+#winnerArea.show,#winnerArea[style*="display: block"],.winner-photo-box{animation:rgReveal .65s ease-out both}
+.empty{color:#d0c6ad!important}
+a{color:#f1cc70}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+
+<div class="brand">
+
+    <div class="diya diya-animation">
+        <img src="/assets/diya-animated.gif" alt="Jalta hua diya" />
+    </div>
+
+    <div>
+
+        <div class="title">
+            शुभ दीपावली
+        </div>
+
+        <div class="company">
+            BIRLA CORPORATION
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="header-prize">
+
+    <div class="header-prize-label">
+        PRIZE NO
+    </div>
+
+    <div
+        id="headerPrize"
+        class="header-prize-no"
+    >
+        10.10
+    </div>
+
+</div>
+
+
+<div class="header-actions">
+
+    <button
+        id="displayBtn"
+        class="btn-display"
+    >
+        📺 DISPLAY
+    </button>
+
+    <button
+        id="settingsBtn"
+        class="btn-settings"
+    >
+        ⚙ SETTINGS
+    </button>
+
+</div>
+
+
+</header>
+
+
+<section class="action-bar">
+
+
+<div class="search-area">
+
+    <input
+        id="couponSearch"
+        class="search-input"
+        placeholder="Enter Coupon No / SAP Code"
+    >
+
+    <button
+        id="searchBtn"
+        class="btn-search"
+    >
+        🔍 SEARCH
+    </button>
+
+</div>
+
+
+<button
+    id="saveBtn"
+    class="btn-save"
+>
+    💾 SAVE PRIZE
+</button>
+
+
+<button
+    id="clearBtn"
+    class="btn-clear"
+>
+    ✖ CLEAR
+</button>
+
+
+<button
+    id="masterBtn"
+    class="btn-master"
+>
+    📊 MASTER DATA
+</button>
+
+<button
+    id="departmentEntryBtn"
+    class="btn-master"
+    type="button"
+>
+    🧑‍💼 DEPARTMENT ENTRY
+</button>
+
+
+<button
+    id="resultBtn"
+    class="btn-result"
+>
+    🏆 RESULT
+</button>
+
+
+</section>
+
+
+<main class="content">
+
+
+<section>
+
+<h2 class="section-title">
+    👤 EMPLOYEE DETAILS
+</h2>
+
+
+<div class="employee-detail-cards">
+
+
+<div class="detail-card name-card">
+
+<div class="detail-label">
+    👤 EMPLOYEE NAME
+</div>
+
+<div
+    id="nameValue"
+    class="detail-value"
+>
+    -
+</div>
+
+</div>
+
+
+<div class="detail-card sap-card">
+
+<div class="detail-label">
+    🆔 SAP CODE
+</div>
+
+<div
+    id="sapValue"
+    class="detail-value"
+>
+    -
+</div>
+
+</div>
+
+
+<div class="detail-card prize-card">
+
+<div class="detail-label">
+    🏆 PRIZE NO
+</div>
+
+<div
+    id="prizeValue"
+    class="detail-value"
+>
+    10.10
+</div>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<section class="photo-section">
+
+<h2 class="section-title">
+    📷 EMPLOYEE PHOTO
+</h2>
+
+<div
+    id="employeeName"
+    class="photo-name"
+>
+    Employee Name
+</div>
+
+
+<div class="photo-box">
+
+<img
+    id="employeePhoto"
+>
+
+<div
+    id="photoPlaceholder"
+    class="photo-placeholder"
+>
+    👤
+    <span>
+        Employee Photo
+    </span>
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<div
+    id="messageModal"
+    class="modal"
+>
+
+<div class="modal-box">
+
+<h2 id="messageTitle">
+    Message
+</h2>
+
+<p
+    id="messageText"
+></p>
+
+<button
+    id="messageClose"
+    class="btn-clear"
+>
+    OK
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+let currentEmployee = null;
+let currentPrize = "10.10";
+
+function message(title, text) {
+    document.getElementById("messageTitle").textContent = title;
+    document.getElementById("messageText").textContent = text;
+    document.getElementById("messageModal").classList.add("show");
+}
+
+function setPrize(no) {
+    currentPrize = no || "10.10";
+
+    document.getElementById("headerPrize").textContent = currentPrize;
+    document.getElementById("prizeValue").textContent = currentPrize;
+}
+
+async function loadCurrentPrize() {
+    try {
+        const response = await fetch("/api/current-prize");
+        const data = await response.json();
+
+        if (data.prizeNo === "COMPLETED") {
+            setPrize("COMPLETED");
+        } else {
+            setPrize(data.prizeNo || "10.10");
+        }
+    } catch {
+        setPrize("10.10");
+    }
+}
+
+function clearEmployee() {
+    currentEmployee = null;
+
+    document.getElementById("couponSearch").value = "";
+
+    document.getElementById("sapValue").textContent = "-";
+    document.getElementById("nameValue").textContent = "-";
+    document.getElementById("employeeName").textContent = "Employee Name";
+
+    document.getElementById("employeePhoto").style.display = "none";
+    document.getElementById("photoPlaceholder").style.display = "block";
+
+    setPrize(currentPrize);
+}
+
+async function searchEmployee() {
+    const value =
+        document.getElementById("couponSearch").value.trim();
+
+    if (!value) {
+        message(
+            "SEARCH",
+            "Coupon No या SAP Code डालिए।"
+        );
+        return;
+    }
+
+    try {
+        const response =
+            await fetch(
+                "/api/search/" +
+                encodeURIComponent(value)
+            );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
+
+        currentEmployee = data.employee;
+
+        const e = currentEmployee;
+
+        document.getElementById("sapValue").textContent =
+            e.sapCode || "-";
+
+        document.getElementById("nameValue").textContent =
+            e.name || "-";
+
+        document.getElementById("prizeValue").textContent =
+            currentPrize;
+
+        document.getElementById("employeeName").textContent =
+            e.name || "Employee Name";
+
+        if (e.photo) {
+            document.getElementById("employeePhoto").src = e.photo;
+            document.getElementById("employeePhoto").style.display = "block";
+            document.getElementById("photoPlaceholder").style.display = "none";
+        } else {
+            document.getElementById("employeePhoto").style.display = "none";
+            document.getElementById("photoPlaceholder").style.display = "block";
+        }
+
+    } catch (error) {
+        clearEmployee();
+
+        message(
+            "SEARCH ERROR",
+            error.message || "Employee not found."
+        );
+    }
+}
+
+document.getElementById("searchBtn").addEventListener(
+    "click",
+    searchEmployee
+);
+
+document.getElementById("couponSearch").addEventListener(
+    "keydown",
+    e => {
+        if (e.key === "Enter") {
+            searchEmployee();
+        }
+    }
+);
+
+/* CLEAR HOME FORM ONLY */
+
+document.getElementById("clearBtn").addEventListener(
+    "click",
+    clearEmployee
+);
+
+/* SAVE */
+
+document.getElementById("saveBtn").addEventListener(
+    "click",
+    async () => {
+
+        if (!currentEmployee) {
+            message(
+                "SAVE PRIZE",
+                "पहले employee search कीजिए।"
+            );
+            return;
+        }
+
+        if (currentPrize === "COMPLETED") {
+            message(
+                "PRIZE COMPLETED",
+                "सारे 55 prize save हो चुके हैं।"
+            );
+            return;
+        }
+
+        try {
+            const response =
+                await fetch(
+                    "/api/prizes",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+                        body: JSON.stringify({
+                            prizeNo: currentPrize,
+                            couponNo: currentEmployee.couponNo,
+                            sapCode: currentEmployee.sapCode,
+                            employeeName: currentEmployee.name,
+                            department: currentEmployee.department,
+                            designation: currentEmployee.designation,
+                            unit: currentEmployee.unit,
+                            photo: currentEmployee.photo
+                        })
+                    }
+                );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            clearEmployee();
+
+            await loadCurrentPrize();
+
+            message(
+                "PRIZE SAVED",
+                "Prize " +
+                data.record.prizeNo +
+                " successfully saved."
+            );
+
+        } catch (error) {
+            message(
+                "SAVE ERROR",
+                error.message || "Save failed."
+            );
+        }
+    }
+);
+
+/* DISPLAY */
+
+document.getElementById("displayBtn").addEventListener(
+    "click",
+    () => {
+        window.open(
+            "/display.html",
+            "_blank"
+        );
+    }
+);
+
+/* MASTER */
+
+document.getElementById("masterBtn").addEventListener(
+    "click",
+    () => {
+        window.open(
+            "/master.html",
+            "_blank"
+        );
+    }
+);
+
+/* DEPARTMENT EMPLOYEE ENTRY */
+
+document.getElementById("departmentEntryBtn").addEventListener(
+    "click",
+    () => {
+        window.open("/department-entry.html", "_blank");
+    }
+);
+
+/* RESULT */
+
+document.getElementById("resultBtn").addEventListener(
+    "click",
+    () => {
+        window.open(
+            "/result.html",
+            "_blank"
+        );
+    }
+);
+
+/* SETTINGS */
+
+document.getElementById("settingsBtn").addEventListener(
+    "click",
+    async () => {
+        try {
+            const r = await fetch("/api/health");
+            const d = await r.json();
+
+            message(
+                "SETTINGS",
+                d.message
+            );
+        } catch {
+            message(
+                "SETTINGS",
+                "Server connection failed."
+            );
+        }
+    }
+);
+
+document.getElementById("messageClose").addEventListener(
+    "click",
+    () => {
+        document
+            .getElementById("messageModal")
+            .classList.remove("show");
+    }
+);
+
+loadCurrentPrize();
+
+
+loadCurrentPrize();
+
+setInterval(
+    loadCurrentPrize,
+    3000
+);
+
+loadCurrentPrize();
+
+setInterval(
+    loadCurrentPrize,
+    3000
+);
+
+/* INITIAL CURRENT PRIZE */
+updateCurrentPrize();
+
+/* AUTO REFRESH CURRENT PRIZE */
+setInterval(
+    updateCurrentPrize,
+    2000
+);
+</script>
+
+<script>
+/* Royal Gold interaction sound layer. Sounds are synthesized locally; no audio downloads. */
+(function(){
+ let ctx;
+ function tone(freq,duration,when,volume,type){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.type=type||'sine';o.frequency.setValueAtTime(freq,ctx.currentTime+when);g.gain.setValueAtTime(0.0001,ctx.currentTime+when);g.gain.exponentialRampToValueAtTime(volume,ctx.currentTime+when+0.02);g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+when+duration);o.connect(g);g.connect(ctx.destination);o.start(ctx.currentTime+when);o.stop(ctx.currentTime+when+duration+0.03);}catch(e){}}
+ function clickSound(){tone(740,.07,0,.025,'triangle')}
+ function winSound(){tone(523,.18,0,.06);tone(659,.2,.12,.055);tone(784,.26,.25,.055);tone(1047,.42,.4,.06)}
+ document.addEventListener('click',function(e){if(e.target.closest('button'))clickSound()},true);
+ window.RoyalGoldSound={click:clickSound,win:winSound};
+ const winner=document.getElementById('winnerArea');
+ if(winner&&window.MutationObserver){let last='';new MutationObserver(()=>{const now=(winner.innerText||'').trim();if(now&&now!==last&&/\S/.test(now)){last=now;winSound()}}).observe(winner,{subtree:true,childList:true,characterData:true,attributes:true});}
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
+
