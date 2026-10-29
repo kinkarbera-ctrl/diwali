@@ -1,0 +1,55 @@
+{
+  "name": "birla-diwali-prize-royal-gold",
+  "version": "1.0.0",
+  "description": "Birla Diwali Prize Management - Royal Gold Edition",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "node server.js",
+    "app:dev": "electron .",
+    "dist:win": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "msnodesqlv8": "^5.3.0",
+    "mssql": "^12.7.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.birla.diwaliprize.royalgold",
+    "productName": "Birla Diwali Prize Royal Gold",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "server.js",
+      "server-*.js",
+      "public/**/*",
+      "data/**/*",
+      "package.json",
+      "electron-main.js",
+      "node_modules/**/*",
+      ".env"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
